@@ -24,13 +24,13 @@ public void user_Navigate_to_Application() throws Throwable {
 
 @When("^User clicks on Login Option$")
 public void user_clicks_on_Login_Option() throws Throwable {
-	   signinpage.clickOnSignInOption();
+//	   signinpage.clickOnSignInOption();
 
 }
 
 @When("^User enters \"([^\"]*)\" and \"([^\"]*)\"$")
-public void user_enters_and(String contact, String pass) throws Throwable {
-	signinpage.signIntoApp(contact, pass);
+public void user_enters_and(String arg1, String arg2) throws Throwable {
+	signinpage.signIntoApp(arg1, arg2);
 }
 
 @When("^User clicks on Login button$")
