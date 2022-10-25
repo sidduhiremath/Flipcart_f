@@ -10,7 +10,12 @@ import cucumber.api.java.*;
 import cucumber.api.java.en.*;
 
 public class ApplicationSignInTest extends TestBase{
-	
+	ApplicationSignInTest signintest;
+	@Before("@Login")
+	public void Launch() {
+		initialization();
+		
+	}
 
 @Given("^User Navigate to Application$")
 public void user_Navigate_to_Application() throws Throwable {

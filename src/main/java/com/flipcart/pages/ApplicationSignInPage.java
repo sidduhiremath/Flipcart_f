@@ -1,6 +1,5 @@
 package com.flipcart.pages;
 
-import java.io.IOException;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

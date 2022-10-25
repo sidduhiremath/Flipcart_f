@@ -8,9 +8,12 @@ import org.openqa.selenium.support.ui.Select;
 
 import com.flipcart.base.TestBase;
 
+
 public class CommonMethods extends TestBase {
 	Select select;
 	Actions action;
+	
+	
 
 	public void web_Click(WebElement element) throws InterruptedException {
 		Thread.sleep(5000);

@@ -27,6 +27,7 @@ import com.flipcart.pages.ProceedToCheckoutPage;
 
 
 
+
 public class TestBase {
 	public static WebDriver driver;
 	public static Properties property;
@@ -63,7 +64,6 @@ public class TestBase {
 		if(browserName.equals("chrome")){
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"\\src\\main\\java\\com\\flipcart\\resource\\chromedriver.exe");	
 			driver = new ChromeDriver(); 
-//			driver.get(property.getProperty("Url"));
 		}
 		else if(browserName.equals("FF")){
 			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"\\src\\main\\java\\com\\flipcart\\resource\\gickodriver.exe");	
