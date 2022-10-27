@@ -7,38 +7,7 @@ import cucumber.api.java.en.*;
 
 public class CheckItemAvailabilityTest extends TestBase{
 
-	String itemavaialable=null;
 	
-	@Given("^User clicks on My Personal Information button$")
-	public void user_clicks_on_My_Personal_Information_button() throws Throwable {
-	   checkavailability.clickOnMyPersonalInfo();
-	}
-
-	@Given("^User Selects Social title Option #Radio button$")
-	public void user_Selects_Social_title_Option_Radio_button() throws Throwable {
-		checkavailability.selectDay();
-	}
-
-	@Given("^User Updates Date of Birth #Data picker$")
-	public void user_Updates_Date_of_Birth_Data_picker() throws Throwable {
-		checkavailability.selectDay();
-		Thread.sleep(4000);
-		checkavailability.selectDay();
-		Thread.sleep(4000);
-		checkavailability.selectDay();
-		Thread.sleep(4000);
-	}
-
-	@Then("^User enters Password$")
-	public void user_enters_Password() throws Throwable {
-		checkavailability.eneterConfirmPassword();
-	}
-
-	@Then("^Clicks on Save button$")
-	public void clicks_on_Save_button() throws Throwable {
-		checkavailability.saveInfo();
-	}
-
 	@Given("^User Clicks on Search bar$")
 	public void user_Clicks_on_Search_bar() throws Throwable {
 		checkavailability.clickOnSearchBar();
@@ -46,36 +15,46 @@ public class CheckItemAvailabilityTest extends TestBase{
 
 	@When("^User enters Item name$")
 	public void user_enters_Item_name() throws Throwable {
-		checkavailability.enperItemName();
+		checkavailability.enterItemName();
 	}
 
 	@When("^Clicks on Search icon$")
 	public void clicks_on_Search_icon() throws Throwable {
-		checkavailability.clickOnSearchBar();
+		checkavailability.clickOnSearchIcon();
 	}
 
-	@When("^User Filters the product#DropDown$")
-	public void user_Filters_the_product_DropDown() throws Throwable {
-		checkavailability.sortTheItem();
+	@When("^User Clicks flight tab$")
+	public void user_Clicks_flight_tab() throws Throwable {
+		checkavailability.clickOnFlights();
 	}
 
-	@Given("^User Fetches the availability of product$")
-	public void user_Fetches_the_availability_of_product() throws Throwable {
-		checkavailability.isItemAvailable();
+	@When("^User selects type of trip$")
+	public void user_selects_type_of_trip() throws Throwable {
+		checkavailability.selectTripType();
 	}
 
-	@Given("^User Verifies the Item Availability$")
-	public void user_Verifies_the_Item_Availability() throws Throwable {
-	   if((checkavailability.isItemAvailable())=="In Stock") {
-		   System.out.println("Item Avaiable");
-	   }
-	   else {
-		   System.out.println("Item Not Avaiable");
-
-	   }
-		   
+	@Then("^User selects Daparts date #add step to come back to home screen$")
+	public void user_selects_Daparts_date_add_step_to_come_back_to_home_screen() throws Throwable {
+		checkavailability.clickonDapartsOn();
+		Thread.sleep(3000);
+		checkavailability.selectDapartsOnDate();
 	}
 
+	@And("^User verifies Item Availability$")
+	public void user_verifies_Item_Availability() throws Throwable {
+	   checkavailability.checkItemAvailability();
+	}
+	
+	@When("^User selects customer rating and minimum price #Checkbox and dropdown$")
+	public void user_selects_customer_rating_and_minimum_price_Checkbox_and_dropdown() throws Throwable {
+	    checkavailability.selectCustomerRating();
+	    checkavailability.selectMinPrice();
+	}
+
+	@Then("^User Clicks on Item$")
+	public void user_Clicks_on_Item() throws Throwable {
+	   checkavailability.clickOnItem();
+	}
 	
 	
 }

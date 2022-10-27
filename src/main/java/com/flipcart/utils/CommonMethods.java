@@ -38,7 +38,7 @@ public class CommonMethods extends TestBase {
 		Thread.sleep(5000);
 		action = new Actions(driver);
 		Thread.sleep(5000);
-		action.moveToElement(element);
+		action.moveToElement(element).build().perform();
 		Thread.sleep(3000);
 	}
 
@@ -56,10 +56,8 @@ public class CommonMethods extends TestBase {
 			if (!(parent.equals(child))) {
 				driver.switchTo().window(child);
 				Thread.sleep(2000);
-				driver.close();
 			}
 		}
-		driver.switchTo().window(parent);
 	}
 
 	public String web_Get_Data(WebElement element) throws InterruptedException {
@@ -72,9 +70,14 @@ public class CommonMethods extends TestBase {
 		driver.navigate().refresh();
 	}
 
-	public void web_Accept_Alert() throws InterruptedException {
+	public void web_Navigate_Back() throws Exception{
 		Thread.sleep(4000);
-		driver.switchTo().alert().accept();
+		driver.navigate().back();
+	}
+	
+	public void web_Clear_the_Field(WebElement element) throws Exception {
+		Thread.sleep(4000);
+		element.clear();
 
 	}
 

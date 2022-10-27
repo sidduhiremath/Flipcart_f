@@ -30,6 +30,9 @@ public class ApplicationSignInPage extends CommonMethods{
 	
 	@FindBy(xpath = "//div[text()='Logout']")
 	WebElement logout;
+	
+	@FindBy(xpath = "//span[contains(text(),'incorrect')]")
+	WebElement incorrectcredential;
 
 	public String validateApplicationTitle() throws Exception {
 		takescreenshot("SignInPage");
@@ -49,8 +52,19 @@ public class ApplicationSignInPage extends CommonMethods{
 	Thread.sleep(4000);
 	web_Send_Keys(password, pass);
 	Thread.sleep(4000);
+	}
 	
-
+	public String validateMessage() throws InterruptedException {
+		String message = null;
+		if(incorrectcredential.isDisplayed()) {
+		message=web_Get_Data(incorrectcredential);
+		Thread.sleep(4000);
+		}
+		else {
+			System.out.println("Valid");
+		}
+		
+		return message;
 	}
 	
 	public void clickOnSignInButton() throws Exception {
@@ -61,25 +75,11 @@ public class ApplicationSignInPage extends CommonMethods{
 		Thread.sleep(4000);
 	}
 
-	public String validateHomePage() throws Exception {
-		takescreenshot("Home Page");
-		return web_Get_Title();
-	
-	}
-	
-	public String validateOrderPage() throws Exception {
-		takescreenshot("Order Page");
-		return web_Get_Title();
-	}
-	
-	public void signOutFromTheOption() throws Exception {
-		Thread.sleep(4000);
-		web_Click(logoutoption);
-		Thread.sleep(4000);
-	}
-
-	public String validateSinInPage() throws Exception {
+			
+	public String validateLoginPage() throws Exception {
 		takescreenshot("SignIn Page");
 		return web_Get_Title();
 	}
+	
+	
 }

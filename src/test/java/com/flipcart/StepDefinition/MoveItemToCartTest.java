@@ -1,49 +1,36 @@
 package com.flipcart.StepDefinition;
 
 import com.flipcart.base.TestBase;
+import com.flipcart.pages.MoveItemToCartPage;
 
 import cucumber.api.java.en.*;
 
 public class MoveItemToCartTest extends TestBase{
 
 	
-	@Given("^User shares the Item$")
-	public void user_shares_the_Item() throws Throwable {
-	    addtocart.ClickOnItem();
-	    addtocart.ShareItem();
+	@Given("^User is in item details screen  #Window Handling$")
+	public void user_is_in_item_details_screen_Window_Handling() throws Throwable {
+	   movetocart.switchtoItemDetailsscreen();
 	}
 
-	@Given("^User Clicks on Add to Cart and Proceed to Checkout #Window Handling$")
-	public void user_Clicks_on_Add_to_Cart_and_Proceed_to_Checkout_Window_Handling() throws Throwable {
-		addtocart.ClickOnAddToCart();
-		addtocart.ClickOnProceedToChechOut();
+	@Given("^User selects item size$")
+	public void user_selects_item_size() throws Throwable {
+	    movetocart.selectItemSize("S");
 	}
 
-	@Given("^User Clicks on Item Size$")
-	public void user_Clicks_on_Item_Size() throws Throwable {
-		addtocart.ClickOnSize();
+	@Given("^User clicks on Add to Cart$")
+	public void user_clicks_on_Add_to_Cart() throws Throwable {
+	    movetocart.clickOnAddToCart();
 	}
 
-	@Given("^User Edit the Size # DropDown$")
-	public void user_Edit_the_Size_DropDown() throws Throwable {
-		addtocart.ModifyItemSize();
+	@Given("^User clicks on item$")
+	public void user_clicks_on_item() throws Throwable {
+	  movetocart.clickOnItem();
 	}
 
-	@Given("^User fetches the item details#Table Habndling$")
-	public void user_fetches_the_item_details_Table_Habndling() throws Throwable {
-		addtocart.FetchItemDetails();
+	@Given("^User selects the different size$")
+	public void user_selects_the_different_size() throws Throwable {
+	    movetocart.selectItemSize("M");
 	}
 
-	@Then("^User removes an item from cart$")
-	public void user_removes_an_item_from_cart() throws Throwable {
-		addtocart.RemoveItem();
-	}
-
-	@Then("^User click on Preceed to Checkout$")
-	public void user_click_on_Preceed_to_Checkout() throws Throwable {
-		addtocart.ProceedToChechOut();
-		System.out.println("Success");
-	}
-	
-	
 }

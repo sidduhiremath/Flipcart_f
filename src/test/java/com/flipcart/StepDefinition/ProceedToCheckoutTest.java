@@ -15,27 +15,29 @@ public class ProceedToCheckoutTest extends TestBase{
 		driver.quit();
 	}
 	
-	@Given("^User is in Address Page$")
-	public void user_is_in_Address_Page() throws Throwable {
-	   Assert.assertEquals("Order - My Store", checkout.VerifyAddresssPage());
-		Thread.sleep(4000);
+	@Given("^User fetches the item details$")
+	public void user_fetches_the_item_details() throws Throwable {
+	    checkout.getItemDetails();
 	}
 
-	@Then("^User clicks on Proceed to Checkout$")
-	public void user_clicks_on_Proceed_to_Checkout() throws Throwable {
-		addtocart.ProceedToChechOut();
+	@And("^User removes the item from cart$")
+	public void user_removes_the_item_from_cart() throws Throwable {
+	   checkout.removeItem();
 	}
-
-	@Then("^User Selects Terms of Services # Checkbox$")
-	public void user_Selects_Terms_of_Services_Checkbox() throws Throwable {
-	   checkout.SelectTermsAndService();
-	}
-
-	@Then("^User clicks on Proceed to Checkout button$")
-	public void user_clicks_on_Proceed_to_Checkout_button() throws Throwable {
-		   checkout.ClickProceedCheckOut();
-
-	}
-
 	
+	@And("^User clicks on Place Order$")
+	public void user_clicks_on_Place_Order() throws Throwable {
+	 checkout.clickonPlaceOrder();  
+	}
+
+	@Given("^User clicks on Logout Option$")
+	public void user_clicks_on_Logout_Option() throws Throwable {
+		checkout.clickonLogoutOption();
+	}
+
+	@Then("^User Logged out from the application Successfully$")
+	public void user_Logged_out_from_the_application_Successfully() throws Throwable {
+	   checkout.clickonLogoutButton();
+	}
+
 	}

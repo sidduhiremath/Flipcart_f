@@ -35,11 +35,11 @@ public class TestBase {
 	public static File file;
 	public static FileOutputStream fout;
 	public static Long PAGE_LOAD_TIMEOUT=20L;
-	public static Long IMPLICIT_WAIT=10l;
+	public static Long IMPLICIT_WAIT=5l;
 	
 	public static ApplicationSignInPage signinpage;
 	public static CheckItemAvailabilityPage checkavailability;
-	public static MoveItemToCartPage addtocart;
+	public static MoveItemToCartPage movetocart;
 	public static ProceedToCheckoutPage checkout;
 
 
@@ -86,14 +86,14 @@ public class TestBase {
 		finally {
 			signinpage=PageFactory.initElements(driver,ApplicationSignInPage.class);
 			checkavailability=PageFactory.initElements(driver,CheckItemAvailabilityPage.class);
-			addtocart=PageFactory.initElements(driver,MoveItemToCartPage.class);
+			movetocart=PageFactory.initElements(driver,MoveItemToCartPage.class);
 			checkout=PageFactory.initElements(driver,ProceedToCheckoutPage.class);
 		}
 
 	}
 	
 	public String readFromExcel(int rown) throws Exception {
-	file = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\testdata\\Controller.xlsx");
+	file = new File(System.getProperty("user.dir")+"\\src\\main\\java\\com\\flipcart\\testdata\\Controller.xlsx");
 	FileInputStream fis = new FileInputStream(file);
 	XSSFWorkbook xssfWorkbook = new XSSFWorkbook(fis);
 	XSSFSheet sheet = xssfWorkbook.getSheetAt(0);

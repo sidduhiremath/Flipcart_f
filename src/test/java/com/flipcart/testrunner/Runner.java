@@ -9,11 +9,11 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-features = { "src\\test\\java\\com\\flipcart\\Features\\ApplicationSignIn.feature"}
+features = { "src\\test\\java\\com\\flipcart\\Features"}
 ,glue={"com.flipcart.StepDefinition"}
 ,monochrome=true
 //,dryRun=false
-,plugin= {"pretty","json:target/cucumber.json"} //to generate different types of reporting
+,plugin= {"pretty","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter:target/report.html"} //to generate different types of reporting
 )
 public class Runner {
 

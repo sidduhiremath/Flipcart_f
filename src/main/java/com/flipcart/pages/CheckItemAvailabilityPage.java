@@ -1,5 +1,8 @@
 package com.flipcart.pages;
 
+import java.time.LocalDate;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -15,105 +18,119 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	@FindBy(xpath="//span[text()='My personal information']")
 	WebElement mypersonalinfo;
 	
-	@FindBy(xpath="//input[@name='id_gender']")
-	WebElement gender;
-	
-	@FindBy(name = "days")
-	WebElement day;
-	
-	@FindBy(name="months")
-	WebElement month;
-	
-	@FindBy(name="years")
-	WebElement year;
-	
-	@FindBy(id = "old_passwd")
-	WebElement confirmpassword;
-	
-	@FindBy(xpath="//span[text()='Save']")
-	WebElement saveinfo;
-	
-	@FindBy(name = "search_query")
+	@FindBy(xpath="//input[@name='q']")
 	WebElement searchbar;
 	
-	@FindBy(name = "submit_search")
+	@FindBy(xpath = "//button[@class='L0Z3Pu']")
 	WebElement searchicon;
 	
-	@FindBy(id = "selectProductSort")
-	WebElement sortitem;
+	@FindBy(xpath="//a[text()='Flights']")
+	WebElement flighttab;
 	
-	@FindBy(xpath = "(//span[@class='available-now'])[1]")
-	WebElement isitemavaialable;
+	@FindBy(xpath="//label[@for='ONE_WAY']")
+	WebElement oneway;
 	
+	@FindBy(xpath = "//label[@for='ROUND_TRIP']")
+	WebElement roundtrip;
 	
+	@FindBy(xpath="//input[@name='0-datefrom']")
+	WebElement departson;
 	
-	public void clickOnMyPersonalInfo() throws InterruptedException {
-		Thread.sleep(4000);
-		web_Click(mypersonalinfo);
-	}
+	@FindBy(xpath = "//div[text()='Availability']")
+	WebElement availabiltydropdown;
 	
-	public void selectGender() throws Exception {
-		Thread.sleep(4000);
-		web_Click(gender);
-		takescreenshot("Gender");
-	}
+	@FindBy(xpath = "//div[text()='Include Out of Stock']")
+	WebElement instockcheckbox;
 	
-	public void selectDay() throws InterruptedException {
-		Thread.sleep(4000);
-		web_Drop_Down(day, "22  ");
-	}
+	@FindBy(xpath = "//div[@class='_1YokD2 _3Mn1Gg']/div[2]/div/div[2]")
+	WebElement clickonitem;
 	
-	public void selectMonth() throws InterruptedException {
-		Thread.sleep(4000);
-		web_Drop_Down(month, "March ");
-	}
+	@FindBy(xpath = "//div[text()='4★ & above']")
+	WebElement customerrating;
 	
-	public void selectYear() throws Exception {
-		Thread.sleep(4000);
-		web_Drop_Down(year, "1997  ");
-		takescreenshot("Date of Birth");
-	}
+	@FindBy(xpath = "(//select[@class='_2YxCDZ'])[1]")
+	WebElement minprice;
 	
-	public void eneterConfirmPassword() throws Exception {
-		web_Click(confirmpassword);
-		Thread.sleep(4000);
-		web_Send_Keys(confirmpassword, property.getProperty("Password"));
-		takescreenshot("Confirm Password");
-	}
-	
-	public void saveInfo() throws Exception {
-		Thread.sleep(4000);
-		web_Click(saveinfo);
-		takescreenshot("Save Info");
-	}
-	
-	public void clickOnSearchBar() throws InterruptedException {
-		Thread.sleep(4000);
+	public void clickOnSearchBar() throws Exception {
+		Thread.sleep(3000);
+		web_Clear_the_Field(searchbar);
 		web_Click(searchbar);
 	}
-
-	public void enperItemName() throws Exception  {
-		Thread.sleep(4000);
-		String productname=readFromExcel(1);
-		Thread.sleep(3000);
-		web_Send_Keys(searchbar, productname);
-		takescreenshot("Enetr Item in Searchbar");
-	}
 	
-	public void clickOnSearchIcon() throws InterruptedException {
-		Thread.sleep(6000);
+	
+	public void enterItemName() throws Exception {
+		Thread.sleep(3000);
+		web_Clear_the_Field(searchbar);
+		web_Send_Keys(searchbar,readFromExcel(1));
+//		web_Send_Keys(searchbar,"shirt");
+	}
+
+
+	public void clickOnSearchIcon() throws Exception {
+		Thread.sleep(3000);
 		web_Click(searchicon);
 	}
 	
-	public void sortTheItem() throws Exception {
-		Thread.sleep(8000);
-		web_Drop_Down(sortitem, "Product Name: A to Z");
-		takescreenshot("Sort the Item");
+	public void clickOnFlights() throws Exception {
+		Thread.sleep(3000);
+		web_Click(flighttab);
 	}
 	
-	public String isItemAvailable() throws InterruptedException {
-		String itemavailable=isitemavaialable.getText();
-		Thread.sleep(4000);
-		return itemavailable;
+	public void selectTripType() throws Exception {
+		Thread.sleep(3000);
+		if((oneway.isSelected())) {
+		web_Click(roundtrip);
+		}
+		else {
+			Thread.sleep(3000);
+			web_Click(oneway);
+		}
+	}
+	
+	public void clickonDapartsOn() throws Exception {
+		Thread.sleep(3000);
+		web_Mouse_Hover(departson);
+		Thread.sleep(3000);
+		web_Click(departson);
+	}
+	
+	public void selectDapartsOnDate() throws Exception {
+		Thread.sleep(3000);
+		LocalDate currentdate=LocalDate.now();
+		int departsondate=currentdate.getDayOfMonth();
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//button[text()='"+(departsondate+4)+"']")).click();
+		Thread.sleep(3000);
+		driver.navigate().back();
+		Thread.sleep(5000);
+	}
+	
+	public void checkItemAvailability() throws Exception {
+		Thread.sleep(3000);
+		web_Click(availabiltydropdown);
+		Thread.sleep(3000);
+		if(!(instockcheckbox.isSelected())) {
+			System.out.println("Listed only In stock itmes");
+		}
+		else{
+			System.out.println("Listed In and Out of stock itmes");
+		}
+	}
+		
+	public void selectCustomerRating() throws Exception {
+		Thread.sleep(5000);
+		web_Click(customerrating);
+	}
+	
+	public void selectMinPrice() throws Exception{
+		Thread.sleep(5000);
+		web_Drop_Down(minprice, "500");
+	}
+	
+	public void clickOnItem() throws Exception {
+		Thread.sleep(2000);
+		web_Mouse_Hover(clickonitem);
+		Thread.sleep(3000);
+		web_Click(clickonitem);
 	}
 }

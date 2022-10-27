@@ -17,39 +17,62 @@ public class ProceedToCheckoutPage extends CommonMethods {
 	public void teardown(){
 		driver.quit();
 	}
-	@FindBy(xpath = "//label[contains(text(),'terms of service')]")
-	WebElement termsandservice;
-
-	@FindBy(xpath = "//a[@title='Close']")
-	WebElement closepopup;
-
-	@FindBy(xpath = "(//span[contains(text(),'Proceed')])[2]")
-	WebElement proceed;
 	
-	public String VerifyAddresssPage() throws Exception {
-		Thread.sleep(4000);
-		takescreenshot("Address Page");
-		return web_Get_Title();
+	@FindBy(xpath = "(//div[text()='Remove'])[1]")
+	WebElement removeoption;
+	
+	@FindBy(xpath = "(//a[@class='_2Kn22P gBNbID'])[1]")
+	WebElement itemname;
+	
+	@FindBy(xpath = "(//div[@class='_20RCA6'])[1]")
+	WebElement itemsize;
+	
+	@FindBy(xpath = "(//span[@class='_2-ut7f _1WpvJ7'])[1]")
+	WebElement itemprice;
+	
+	@FindBy(xpath = "(//div[text()='Remove'])[1]")
+	WebElement remove;
+	
+	@FindBy(xpath = "//button/span[text()='Place Order']")
+	WebElement placeorder;
+	
+	@FindBy(xpath = "//div[@class='_1psGvi _3BvnxG']")
+	WebElement logoutoption;
+	
+	@FindBy(xpath = "//div[text()='Logout']")
+	WebElement logoutbutton;
+	
+	public void getItemDetails() throws Exception {
+		System.out.println("Item Name: "+web_Get_Data(itemname));
+		System.out.println(web_Get_Data(itemsize));
+		System.out.println("Item Price: "+web_Get_Data(itemprice));
+		}
+
+		public void removeItem() throws Exception{
+			Thread.sleep(3000);
+			web_Click(removeoption);
+			Thread.sleep(2000);
+			web_Click(remove);
+			Thread.sleep(5000);
+		}
+	
+	public void clickonPlaceOrder() throws Exception{
+		Thread.sleep(3000);
+		web_Click(placeorder);
 	}
-
-	public void SelectTermsAndService() throws Exception {
-		Thread.sleep(4000);
-		web_Click(termsandservice);
-		takescreenshot("Terms of Service");
+	
+	
+	public void clickonLogoutOption() throws Exception {
+		web_Navigate_Back();
+		Thread.sleep(3000);
+		web_Mouse_Hover(logoutoption);
+		
 	}
-
-
-	public void ClickProceedCheckOut() throws InterruptedException {
-		Thread.sleep(4000);
-		web_Reload_Screen();
-		Thread.sleep(4000);
-//		Web_Accept_Alert();
-		web_Click(proceed);
-		Thread.sleep(4000);
-		web_Click(closepopup);
-		Thread.sleep(4000);
-		web_Click(termsandservice);
-		Thread.sleep(4000);
+	
+	public void clickonLogoutButton() throws Exception {
+		Thread.sleep(2000);
+		web_Click(logoutbutton);
+		Thread.sleep(5000);
 	}
-
 }
+

@@ -19,28 +19,30 @@ public class ApplicationSignInTest extends TestBase{
 
 @Given("^User Navigate to Application$")
 public void user_Navigate_to_Application() throws Throwable {
-   signinpage.validateApplicationTitle();
-}
-
-@When("^User clicks on Login Option$")
-public void user_clicks_on_Login_Option() throws Throwable {
-//	   signinpage.clickOnSignInOption();
-
+	Assert.assertEquals("Application is launched", "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!", signinpage.validateApplicationTitle());
 }
 
 @When("^User enters \"([^\"]*)\" and \"([^\"]*)\"$")
-public void user_enters_and(String arg1, String arg2) throws Throwable {
-	signinpage.signIntoApp(arg1, arg2);
+public void user_enters_and(String contact, String password) throws Throwable {
+	signinpage.signIntoApp(contact, password);
+	
 }
 
 @When("^User clicks on Login button$")
 public void user_clicks_on_Login_button() throws Throwable {
    signinpage.clickOnSignInButton();
+   Thread.sleep(3000);
+//   if(signinpage.validateMessage().contains("incorrect")) {
+//		driver.close();
+//	}
+//	else {
+//		System.out.println("Valid credentials");
+//	}
 }
 
 @Then("^User Logged into the application Successfully #validate page title$")
 public void user_Logged_into_the_application_Successfully_validate_page_title() throws Throwable {
-    
+	Assert.assertEquals("Application is launched", "Online Shopping Site for Mobiles, Electronics, Furniture, Grocery, Lifestyle, Books & More. Best Offers!", signinpage.validateLoginPage());
 }
 
 
