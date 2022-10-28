@@ -80,5 +80,7 @@ public class CommonMethods extends TestBase {
 		element.clear();
 
 	}
+	
+	
 
 }

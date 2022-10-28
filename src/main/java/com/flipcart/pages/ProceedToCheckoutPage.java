@@ -61,6 +61,7 @@ public class ProceedToCheckoutPage extends CommonMethods {
 	public void clickonPlaceOrder() throws Exception{
 		Thread.sleep(3000);
 		web_Click(placeorder);
+		Thread.sleep(6000);
 		takescreenshot("Place Order");
 	}
 	
