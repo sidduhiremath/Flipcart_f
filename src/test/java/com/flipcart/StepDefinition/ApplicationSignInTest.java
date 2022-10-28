@@ -12,7 +12,7 @@ import cucumber.api.java.en.*;
 public class ApplicationSignInTest extends TestBase{
 	ApplicationSignInTest signintest;
 	@Before("@Login")
-	public void Launch() {
+	public void launch() {
 		initialization();
 		
 	}

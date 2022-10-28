@@ -46,14 +46,14 @@ public class ProceedToCheckoutPage extends CommonMethods {
 		System.out.println("Item Name: "+web_Get_Data(itemname));
 		System.out.println(web_Get_Data(itemsize));
 		System.out.println("Item Price: "+web_Get_Data(itemprice));
-		takescreenshot("Item Deatils");
+		getScreenShot("Item Deatils");
 		}
 
 		public void removeItem() throws Exception{
 			Thread.sleep(3000);
 			web_Click(removeoption);
 			Thread.sleep(2000);
-			takescreenshot("Remove Item");
+			getScreenShot("Remove Item");
 			web_Click(remove);
 			Thread.sleep(5000);
 		}
@@ -62,7 +62,7 @@ public class ProceedToCheckoutPage extends CommonMethods {
 		Thread.sleep(3000);
 		web_Click(placeorder);
 		Thread.sleep(6000);
-		takescreenshot("Place Order");
+		getScreenShot("Place Order");
 	}
 	
 	
@@ -70,7 +70,7 @@ public class ProceedToCheckoutPage extends CommonMethods {
 		web_Navigate_Back();
 		Thread.sleep(3000);
 		web_Mouse_Hover(logoutoption);
-		takescreenshot("Logout Menu");
+		getScreenShot("Logout Menu");
 		
 	}
 	
@@ -78,7 +78,7 @@ public class ProceedToCheckoutPage extends CommonMethods {
 		Thread.sleep(2000);
 		web_Click(logoutbutton);
 		Thread.sleep(5000);
-		takescreenshot("Logged out");
+		getScreenShot("Logged out");
 	}
 }
 

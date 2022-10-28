@@ -12,7 +12,6 @@ import cucumber.api.junit.Cucumber;
 features = { "src\\test\\java\\com\\flipcart\\Features"}
 ,glue={"com.flipcart.StepDefinition"}
 ,monochrome=true
-//,dryRun=false
 ,plugin= {"pretty","json:target/cucumber.json","com.cucumber.listener.ExtentCucumberFormatter:target/report.html"} //to generate different types of reporting
 )
 public class Runner {

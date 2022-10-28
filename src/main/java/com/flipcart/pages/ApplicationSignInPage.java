@@ -32,27 +32,20 @@ public class ApplicationSignInPage extends CommonMethods{
 	WebElement logout;
 	
 	@FindBy(xpath = "//span[contains(text(),'incorrect')]")
- public	WebElement incorrectcredential;
+	public	WebElement incorrectcredential;
 
 	public String validateApplicationTitle() throws Exception {
-		takescreenshot("SignInPage");
+		getScreenShot("SignInPage");
 		return web_Get_Title();
 	}
 	
-	public void clickOnSignInOption() throws Exception {
-		Thread.sleep(4000);
-		web_Click(login);
-		Thread.sleep(6000);
-		takescreenshot("LoginPage");
-
-	}
 	
 	public void signIntoApp(String contact,String pass) throws Exception {
 	web_Send_Keys(contactnumber,contact);
 	Thread.sleep(4000);
 	web_Send_Keys(password, pass);
 	Thread.sleep(4000);
-	takescreenshot("Entered Credentials");
+	getScreenShot("Entered Credentials");
 	}
 	
 	public String validateMessage() throws InterruptedException {
@@ -81,7 +74,7 @@ public class ApplicationSignInPage extends CommonMethods{
 
 			
 	public String validateLoginPage() throws Exception {
-		takescreenshot("Login Page");
+		getScreenShot("Login Page");
 		return web_Get_Title();
 	}
 	

@@ -63,14 +63,14 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 		web_Click(searchicon);
 		Thread.sleep(2000);
 		web_Send_Keys(searchbar,readFromExcel(1));
-		takescreenshot("Entered ItemName");
+		getScreenShot("Entered ItemName");
 	}
 
 
 	public void clickOnSearchIcon() throws Exception {
 		Thread.sleep(3000);
 		web_Click(searchicon);
-		takescreenshot("Item List");
+		getScreenShot("Item List");
 	}
 	
 	public void clickOnFlights() throws Exception {
@@ -103,7 +103,7 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 		Thread.sleep(3000);
 		driver.findElement(By.xpath("//button[text()='"+(departsondate+2)+"']")).click();
 		Thread.sleep(3000);
-		takescreenshot("Flight Search");
+		getScreenShot("Flight Search");
 		driver.navigate().back();
 		Thread.sleep(5000);
 	}

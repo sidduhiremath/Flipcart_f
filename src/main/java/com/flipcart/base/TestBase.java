@@ -131,7 +131,7 @@ public static String cellValue(XSSFCell cell) {
 }
 	
 
-	public  void takescreenshot(String vString) throws IOException
+	public  void getScreenShot(String vString) throws IOException
 	{
 	    TakesScreenshot ts = ((TakesScreenshot)driver);
 	    File source= ts.getScreenshotAs(OutputType.FILE);    
