@@ -25,6 +25,7 @@ public class MoveItemToCartPage extends CommonMethods{
 	public void switchtoItemDetailsscreen() throws Exception{
 		Thread.sleep(2000);
 		web_Switch_To_Window();
+		takescreenshot("Item Deatils");
 	}
 	
 	public void selectItemSize(String size) throws Exception{
@@ -35,6 +36,7 @@ public class MoveItemToCartPage extends CommonMethods{
 	public void clickOnAddToCart() throws Exception{
 		Thread.sleep(2000);
 		web_Click(addtocart);
+		takescreenshot("Item in Cart");
 	}
 	
 	public void clickOnItem() throws Exception {

@@ -32,7 +32,7 @@ public class ApplicationSignInPage extends CommonMethods{
 	WebElement logout;
 	
 	@FindBy(xpath = "//span[contains(text(),'incorrect')]")
-	WebElement incorrectcredential;
+ public	WebElement incorrectcredential;
 
 	public String validateApplicationTitle() throws Exception {
 		takescreenshot("SignInPage");
@@ -52,32 +52,36 @@ public class ApplicationSignInPage extends CommonMethods{
 	Thread.sleep(4000);
 	web_Send_Keys(password, pass);
 	Thread.sleep(4000);
+	takescreenshot("Entered Credentials");
 	}
 	
 	public String validateMessage() throws InterruptedException {
 		String message = null;
+		try {
 		if(incorrectcredential.isDisplayed()) {
 		message=web_Get_Data(incorrectcredential);
 		Thread.sleep(4000);
 		}
 		else {
-			System.out.println("Valid");
+			System.out.println("Correct Credentials");	
+		}}
+		catch(Exception e) {
+			System.out.println("FlipKart");
 		}
 		
 		return message;
 	}
 	
-	public void clickOnSignInButton() throws Exception {
+	public void clickOnLoginButton() throws Exception {
 		Thread.sleep(4000);
-		takescreenshot("Entered Credentials");
-	    JavascriptExecutor executor = (JavascriptExecutor)driver;
+	    executor= (JavascriptExecutor)driver;
 		executor.executeScript("arguments[0].click();", loginbutton);
 		Thread.sleep(4000);
 	}
 
 			
 	public String validateLoginPage() throws Exception {
-		takescreenshot("SignIn Page");
+		takescreenshot("Login Page");
 		return web_Get_Title();
 	}
 	

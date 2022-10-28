@@ -1,6 +1,5 @@
 package com.flipcart.StepDefinition;
 
-import org.junit.Assert;
 
 import com.flipcart.base.TestBase;
 

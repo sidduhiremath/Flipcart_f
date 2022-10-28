@@ -13,6 +13,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -35,7 +36,8 @@ public class TestBase {
 	public static File file;
 	public static FileOutputStream fout;
 	public static Long PAGE_LOAD_TIMEOUT=20L;
-	public static Long IMPLICIT_WAIT=5l;
+	public static Long IMPLICIT_WAIT=10l;
+	public static JavascriptExecutor executor ;
 	
 	public static ApplicationSignInPage signinpage;
 	public static CheckItemAvailabilityPage checkavailability;
@@ -75,6 +77,7 @@ public class TestBase {
 			
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().setScriptTimeout(3L, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
 		
@@ -109,6 +112,7 @@ public class TestBase {
 	else {
 		System.out.println("No data found");
 	}
+	xssfWorkbook.close();
 	return cellStringValue;
 }
 

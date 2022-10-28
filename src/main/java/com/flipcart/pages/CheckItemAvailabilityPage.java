@@ -53,7 +53,6 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	
 	public void clickOnSearchBar() throws Exception {
 		Thread.sleep(3000);
-		web_Clear_the_Field(searchbar);
 		web_Click(searchbar);
 	}
 	
@@ -61,14 +60,17 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	public void enterItemName() throws Exception {
 		Thread.sleep(3000);
 		web_Clear_the_Field(searchbar);
+		web_Click(searchicon);
+		Thread.sleep(2000);
 		web_Send_Keys(searchbar,readFromExcel(1));
-//		web_Send_Keys(searchbar,"shirt");
+		takescreenshot("Entered ItemName");
 	}
 
 
 	public void clickOnSearchIcon() throws Exception {
 		Thread.sleep(3000);
 		web_Click(searchicon);
+		takescreenshot("Item List");
 	}
 	
 	public void clickOnFlights() throws Exception {
@@ -99,8 +101,9 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 		LocalDate currentdate=LocalDate.now();
 		int departsondate=currentdate.getDayOfMonth();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//button[text()='"+(departsondate+4)+"']")).click();
+		driver.findElement(By.xpath("//button[text()='"+(departsondate+2)+"']")).click();
 		Thread.sleep(3000);
+		takescreenshot("Flight Search");
 		driver.navigate().back();
 		Thread.sleep(5000);
 	}
