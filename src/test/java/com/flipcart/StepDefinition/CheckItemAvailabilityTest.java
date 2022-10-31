@@ -6,7 +6,6 @@ import com.flipcart.base.TestBase;
 import cucumber.api.java.en.*;
 
 public class CheckItemAvailabilityTest extends TestBase{
-
 	
 	@Given("^User Clicks on Search bar$")
 	public void user_Clicks_on_Search_bar() throws Throwable {
@@ -15,7 +14,7 @@ public class CheckItemAvailabilityTest extends TestBase{
 
 	@When("^User enters Item name$")
 	public void user_enters_Item_name() throws Throwable {
-		checkavailability.enterItemName();
+		checkavailability.enterItemName();	
 	}
 
 	@When("^Clicks on Search icon$")

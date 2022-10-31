@@ -1,10 +1,10 @@
-Feature: Login to Application
 @Login
+Feature: Login to Application
+
 Scenario Outline: Login to the E-Commerce Application
 Given User Navigates to Application
 When User enters "<contactnumber>" and "<password>"
-And User clicks on Login button
-Then User Logged into the application Successfully #validate page title
+Then User clicks on Login button
 
 Examples:
 | contactnumber  | password  |  

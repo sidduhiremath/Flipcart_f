@@ -1,7 +1,5 @@
 package com.flipcart.testrunner;
 
-
-
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;

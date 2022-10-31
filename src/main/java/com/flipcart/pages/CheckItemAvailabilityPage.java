@@ -51,18 +51,21 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	@FindBy(xpath = "(//select[@class='_2YxCDZ'])[1]")
 	WebElement minprice;
 	
+	@FindBy(xpath = "//img[@title='Flipkart']")
+	WebElement flipkart;
+	
 	public void clickOnSearchBar() throws Exception {
 		Thread.sleep(3000);
 		web_Click(searchbar);
 	}
 	
-	
+
 	public void enterItemName() throws Exception {
 		Thread.sleep(3000);
 		web_Clear_the_Field(searchbar);
-		web_Click(searchicon);
+		web_Click(flipkart);
 		Thread.sleep(2000);
-		web_Send_Keys(searchbar,readFromExcel(1));
+		web_Send_Keys(searchbar,readFromExcel(2));
 		getScreenShot("Entered ItemName");
 	}
 
@@ -101,7 +104,7 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 		LocalDate currentdate=LocalDate.now();
 		int departsondate=currentdate.getDayOfMonth();
 		Thread.sleep(3000);
-		driver.findElement(By.xpath("//button[text()='"+(departsondate+2)+"']")).click();
+		driver.findElement(By.xpath("//button[text()='"+(departsondate)+"']")).click();
 		Thread.sleep(3000);
 		getScreenShot("Flight Search");
 		driver.navigate().back();
@@ -127,7 +130,7 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	
 	public void selectMinPrice() throws Exception{
 		Thread.sleep(5000);
-		web_Drop_Down(minprice, "500");
+		web_Drop_Down(minprice, "₹500");
 	}
 	
 	public void clickOnItem() throws Exception {
@@ -136,4 +139,7 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 		Thread.sleep(3000);
 		web_Click(clickonitem);
 	}
+	
 }
+
+

@@ -59,7 +59,7 @@ public class ApplicationSignInPage extends CommonMethods{
 			System.out.println("Correct Credentials");	
 		}}
 		catch(Exception e) {
-			System.out.println("FlipKart");
+			System.out.println("Handled NoSuchElement Exception");
 		}
 		
 		return message;

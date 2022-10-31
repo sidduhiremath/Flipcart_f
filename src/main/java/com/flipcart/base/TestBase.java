@@ -43,6 +43,7 @@ public class TestBase {
 	public static CheckItemAvailabilityPage checkavailability;
 	public static MoveItemToCartPage movetocart;
 	public static ProceedToCheckoutPage checkout;
+	public int i=1;
 
 
 		
@@ -80,8 +81,8 @@ public class TestBase {
 		driver.manage().timeouts().setScriptTimeout(3L, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT, TimeUnit.SECONDS);
-		
 		driver.get(property.getProperty("Url"));
+		deleteAllFilesFromDirectory(System.getProperty("user.dir")+"\\ScreenShots");
 		}
 		catch(Exception e) {
 			System.out.println(e);
@@ -105,7 +106,6 @@ public class TestBase {
 	 
 	if(!(rown>=rowCount)) {
 			XSSFRow row = sheet.getRow(rown);
-
 				XSSFCell cell = row.getCell(1);
 				cellStringValue = cellValue(cell);
 	}
@@ -130,6 +130,17 @@ public static String cellValue(XSSFCell cell) {
 	}
 }
 	
+public static void deleteAllFilesFromDirectory(String dir) {
+	File file = new File(dir);
+	String[] currentFiles;
+	if (file.isDirectory()) {
+		currentFiles = file.list();
+		for (int i = 0; i < currentFiles.length; i++) {
+			File myFile = new File(file, currentFiles[i]);
+			myFile.delete();
+		}
+	}
+}
 
 	public  void getScreenShot(String vString) throws IOException
 	{
@@ -139,7 +150,4 @@ public static String cellValue(XSSFCell cell) {
 	    FileUtils.copyFile(source,DestFile);
 
 	}
-	
-	
-
 }
