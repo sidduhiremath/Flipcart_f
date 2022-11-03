@@ -27,10 +27,10 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	@FindBy(xpath="//a[text()='Flights']")
 	WebElement flighttab;
 	
-	@FindBy(xpath="//label[@for='ONE_WAY']")
+	@FindBy(xpath="//div[text()='One Way']")
 	WebElement oneway;
 	
-	@FindBy(xpath = "//label[@for='ROUND_TRIP']")
+	@FindBy(xpath = "//div[text()='Round Trip']")
 	WebElement roundtrip;
 	
 	@FindBy(xpath="//input[@name='0-datefrom']")
@@ -55,6 +55,7 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	WebElement flipkart;
 	
 	public void clickOnSearchBar() throws Exception {
+		web_Click(flipkart);
 		Thread.sleep(3000);
 		web_Click(searchbar);
 	}
@@ -62,9 +63,6 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 
 	public void enterItemName() throws Exception {
 		Thread.sleep(3000);
-		web_Clear_the_Field(searchbar);
-		web_Click(flipkart);
-		Thread.sleep(2000);
 		web_Send_Keys(searchbar,readFromExcel(2));
 		getScreenShot("Entered ItemName");
 	}
@@ -84,11 +82,11 @@ public class CheckItemAvailabilityPage extends CommonMethods{
 	public void selectTripType() throws Exception {
 		Thread.sleep(3000);
 		if((oneway.isSelected())) {
-		web_Click(roundtrip);
+		web_Click(oneway);
 		}
 		else {
 			Thread.sleep(3000);
-			web_Click(oneway);
+			web_Click(roundtrip);
 		}
 	}
 	
